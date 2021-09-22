@@ -17,7 +17,12 @@ class RAM:
             ram_dict = {'used': line[2], 'available': line[3]}
         return ram_dict
 
+    def delete_prev_files(self):
+        os.system('nir exec hide "cd tools/OHWM & del \S *.csv"')
+        time.sleep(5)
+
     def find_file(self):
+        self.delete_prev_files()
         path = Path(r"tools/OHWM")
         file_list = [str(pp) for pp in path.glob("**/*.csv")]
         [x for x in os.listdir('.') if x.endswith('.csv')]
