@@ -3,9 +3,11 @@ import os
 import time
 import yaml
 
-from image import screenshot, couter
-from windows import get_uptime, RAM
-from entities import Main
+from vr.image.screen import screenshot
+from vr.image.processing import couter
+from vr.windows.uptime import get_uptime
+from vr.windows.ram import RAM
+from vr.entities.settings import Main
 
 
 logging.basicConfig(
