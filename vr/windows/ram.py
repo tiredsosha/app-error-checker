@@ -18,8 +18,10 @@ class RAM:
         return ram_dict
 
     def delete_prev_files(self):
-        os.system('nir exec hide "cd tools/OHWM & del \S *.csv"')
-        time.sleep(5)
+        #os.system('taskkill /f /im OpenHardwareMonitor.exe')
+        #os.system('del /S \OpenHardwareMonitorLog*.csv')
+        # time.sleep(20)
+        pass
 
     def find_file(self):
         self.delete_prev_files()
