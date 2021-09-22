@@ -1,0 +1,6 @@
+error_name: red.png
+delay: 60
+max_ram: 27.0
+apps:
+  - hc-detskymir-vr-animals.exe
+  - OculusClient.exe
