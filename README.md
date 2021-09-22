@@ -1,6 +1,8 @@
 # Apps error checker
 
 This is Windows lib that compare given image with your Desktop and kills apps which containes in setting file
+
+
 Plus it logs RAM and OS Uptime
 
 ## Installation
