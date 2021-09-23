@@ -18,7 +18,7 @@ logging.basicConfig(
 
 
 def main():
-    logging.info('VR CHECKER IS STARTED')
+    logging.info('VR CHECKER IS STARTED\n')
 
     with open("configs/settings.yaml") as settings:
         settings = Main(**yaml.safe_load(settings))
@@ -26,6 +26,8 @@ def main():
     memory = RAM()
 
     while True:
+        logging.info('Cycle started\n')
+
         memory.ram = memory.read()
 
         used = float(memory.ram['used'][:5])
@@ -33,7 +35,7 @@ def main():
 
         if used > settings.max_ram:
             logging.critical(
-                '  too much used memory. game and oculus app were killed\n'
+                'too much used memory. game and oculus app were killed\n'
             )
             [os.system(
                 f'nircmd exec hide taskkill /F /IM {app}') for app in settings.apps]
@@ -41,32 +43,32 @@ def main():
         os_uptime = get_uptime()
 
         logging.debug(
-            f'    total ram w/o swap is {used + available} GB'
+            f'total ram w/o swap is {used + available} GB'
         )
         logging.debug(
-            f'    used ram ram w/o swap is {used} GB'
+            f'used ram ram w/o swap is {used} GB'
         )
         logging.debug(
-            f'    available ram w/o swap is {available} GB'
+            f'available ram w/o swap is {available} GB'
         )
         logging.debug(
-            f'    os uptime is {os_uptime}'
+            f'os uptime is {os_uptime}'
         )
 
         screenshot()
         matches = couter(settings.error_name)
         if len(matches) > 0:
-            logging.debug(f'   list of errors % is {matches}')
+            logging.debug(f'list of errors % is {matches}')
             logging.critical(
-                '  error is found. game and oculus app were killed\n'
+                'error is found. game and oculus app were killed\n'
             )
             [os.system(
                 f'nircmd exec hide taskkill /F /IM {app}') for app in settings.apps]
 
         else:
-            logging.debug(f'   list of errors % is {matches}')
+            logging.debug(f'list of errors % is {matches}')
 
-        logging.info(f"   Cycle've ended\n")
+        logging.info(f"Cycle ended\n")
 
         time.sleep(settings.delay)
 
