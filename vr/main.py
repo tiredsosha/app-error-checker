@@ -26,7 +26,7 @@ def main():
     memory = RAM()
 
     while True:
-        logging.info('Cycle started\n')
+        logging.info('Cycle started')
 
         memory.ram = memory.read()
 
