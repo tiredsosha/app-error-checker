@@ -1,17 +1,18 @@
 import os
 import time
-import datetime
+from datetime import datetime, date
 
 from pathlib import Path
 
 
 class RAM:
     def __init__(self):
+        self.day = date.today()
         self.file = self.find_file()
         self.ram = self.read()
-        self.date = datetime.date.today()
 
     def read(self):
+        self.check_date()
         with open(self.file, 'r') as ram:
             ram = ram.readlines()
             lines = len(ram) - 1
@@ -20,7 +21,16 @@ class RAM:
         return ram_dict
 
     def check_date(self):
-        if datetime.date.today() != self.date:
+        day = date.today()
+        if day != self.day:
+            t = datetime.now().time()
+            check_t = datetime.strptime('00::05::30', '%H::%M::%S').time()
+            while True:
+                if t <= check_t:
+                    time.sleep(120)
+                else:
+                    break
+            self.day = day
             self.file = self.find_file()
 
     def find_file(self):
