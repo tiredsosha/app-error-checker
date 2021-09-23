@@ -32,7 +32,11 @@ def main():
         available = float(memory.ram['available'][:5])
 
         if used > settings.max_ram:
-            [os.system(f'taskill /F /IM {app}') for app in settings.apps]
+            logging.critical(
+                '  too much used memory. game and oculus app were killed\n'
+            )
+            [os.system(
+                f'nircmd exec hide taskkill /F /IM {app}') for app in settings.apps]
 
         os_uptime = get_uptime()
 
@@ -54,8 +58,10 @@ def main():
         if len(matches) > 0:
             logging.debug(f'   list of errors % is {matches}')
             logging.critical(
-                '  error is found. game and oculus app were killed\n')
-            [os.system(f'taskill /F /IM {app}') for app in settings.apps]
+                '  error is found. game and oculus app were killed\n'
+            )
+            [os.system(
+                f'nircmd exec hide taskkill /F /IM {app}') for app in settings.apps]
 
         else:
             logging.debug(f'   list of errors % is {matches}')
