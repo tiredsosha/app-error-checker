@@ -29,7 +29,7 @@ error_name: red.png
 Add apps that must be terminated in configs/settings.yaml
 ```
 apps:
-  - hc-detskymir-vr-animals.exe
+  - exes.exe
   - OculusClient.exe
 ```
 Add delay between next eteration
