@@ -11,7 +11,7 @@ Plus it logs RAM and OS Uptime
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install wheel.
 
 ```bash
-pip install vr-2.0.0-py3-none-any.whl
+pip install vr-2.1.0-py3-none-any.whl
 ```
 
 ## Usage
